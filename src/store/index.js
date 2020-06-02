@@ -61,6 +61,12 @@ export default new Vuex.Store({
         descripcion: 'descripción 8',
         categoria: 'otros'
       }
+    ],
+    productos_: [
+      'Código',
+      'Nombre',
+      'Descripción',
+      'Categoría'
     ]
   },
   mutations: {

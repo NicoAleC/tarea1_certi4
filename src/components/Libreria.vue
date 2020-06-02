@@ -6,14 +6,21 @@
       <select v-model="categoria">
         <option :key="cat" v-for="cat in categorias">{{ cat }}</option>
       </select>
-      <div v-if="filtrados.length > 0">
-        <div :key="item.codigo" v-for="item in filtrados">
-            {{ item.codigo }} | {{ item.nombre }} | {{ item.descripcion }} | {{ item.categoria }}
-        </div>
-      </div>
-      <div v-else>
-        No existe el item buscado
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th :key="columna" v-for="columna in this.cabeceras">{{ columna }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr :key="item.codigo" v-for="item in filtrados">
+            <td>{{ item.codigo }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.categoria }}</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </template>
 
@@ -50,6 +57,9 @@ export default {
     },
     productos () {
       return this.$store.state.productos
+    },
+    cabeceras () {
+      return this.$store.state.productos_
     }
   }
 }
@@ -61,4 +71,19 @@ export default {
   font-size: 18px;
   color: brown;
 }
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+td {
+  color: black;
+}
+
 </style>
